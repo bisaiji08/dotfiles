@@ -1,0 +1,47 @@
+# 改行を入れない設定（画像のように1行にまとめたい場合）
+add_newline = false
+
+# 左側の表示構成
+format = """
+[](#9aedfe)\
+$directory\
+[](fg:#9aedfe bg:#45475a)\
+$git_branch\
+$git_status\
+[](fg:#45475a)\
+$line_break\
+$character
+"""
+
+# 右側の表示構成（実行時間や時計）
+right_format = """$cmd_duration$time"""
+
+[directory]
+style = "bg:#9aedfe fg:#000000"
+format = "[ $path ]($style)"
+truncation_length = 3
+fish_style_pwd_dir_length = 1
+
+[git_branch]
+symbol = " "
+style = "bg:#45475a fg:#ffffff"
+format = "[[ $symbol$branch ]($style)]($style)"
+
+[git_status]
+style = "bg:#45475a fg:#ffffff"
+format = "[[($all_status$ahead_behind)]($style)]($style)"
+
+[cmd_duration]
+min_time = 0
+style = "fg:#f9e2af"
+format = "[$duration$style]($style)  "
+
+[time]
+disabled = false
+time_format = "%R" # 15:21 の形式
+style = "fg:#bac2de"
+format = " < [󱑎 $time]($style)"
+
+[character]
+success_symbol = "[ >](fg:#a6e3a1)"
+error_symbol = "[ >](fg:#f38ba8)"

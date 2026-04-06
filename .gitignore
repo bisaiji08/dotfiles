@@ -1,1 +1,4 @@
+# 特定のキャッシュディレクトリを除外
+.config/some-app/cache/
+# macOS特有のファイル
 .DS_Store
