@@ -27,7 +27,7 @@ config.window_frame = {
 
 -- タブバーを背景色に合わせる
 config.window_background_gradient = {
-  colors = { "#000000" },
+  colors = { "#203743ff" },
 }
 
 -- タブの追加ボタンを非表示
