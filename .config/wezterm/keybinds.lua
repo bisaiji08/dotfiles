@@ -82,11 +82,6 @@ return {
     { key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
     { key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
     { key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
-    --- Pane移動 LEADER + 矢印キー(補助輪)   
-    { key = 'LeftArrow',  mods = 'LEADER', action = act.ActivatePaneDirection 'Left' },
-    { key = 'RightArrow', mods = 'LEADER', action = act.ActivatePaneDirection 'Right' },
-    { key = 'UpArrow',    mods = 'LEADER', action = act.ActivatePaneDirection 'Up' },
-    { key = 'DownArrow',  mods = 'LEADER', action = act.ActivatePaneDirection 'Down' },
     -- Pane選択
     { key = "[", mods = "CTRL|SHIFT", action = act.PaneSelect },
     -- 選択中のPaneのみ表示
@@ -120,6 +115,23 @@ return {
       mods = "LEADER",
       action = act.ActivateKeyTable({ name = "activate_pane", timeout_milliseconds = 1000 }),
     },
+    -- 透過度をトグル切替 (LEADER + b)
+    {
+      key = "b",
+      mods = "LEADER",
+      action = wezterm.action_callback(function(window, pane)
+        local overrides = window:get_config_overrides() or {} -- 現在の「動的な上書き設定」を取得
+        local eff = window:effective_config() -- 設定ファイル（wezterm.lua）の「現在の有効な設定」を取得
+        if overrides.macos_window_background_blur == 0 then -- 判定：すでに透過度が 0.1 になっていたらリセット（上書きを消す）
+          overrides.window_background_opacity = nil
+          overrides.macos_window_background_blur = nil
+        else -- そうでなければ、確認用に数値を上書きする
+          overrides.window_background_opacity = 0.35
+          overrides.macos_window_background_blur = 0
+        end
+        window:set_config_overrides(overrides)
+      end),
+    },
   },
   -- キーテーブル
   -- https://wezfurlong.org/wezterm/config/key-tables.html
@@ -130,11 +142,6 @@ return {
       { key = "l", action = act.AdjustPaneSize({ "Right", 1 }) },
       { key = "k", action = act.AdjustPaneSize({ "Up", 1 }) },
       { key = "j", action = act.AdjustPaneSize({ "Down", 1 }) },
-      -- 補助輪
-      { key = "LeftArrow", action = act.AdjustPaneSize({ "Left", 1 }) },
-      { key = "RightArrow", action = act.AdjustPaneSize({ "Right", 1 }) },
-      { key = "UpArrow", action = act.AdjustPaneSize({ "Up", 1 }) },
-      { key = "DownArrow", action = act.AdjustPaneSize({ "Down", 1 }) },
       -- Cancel the mode by pressing escape
       { key = "Enter", action = "PopKeyTable" },
     },
@@ -206,4 +213,3 @@ return {
     },
   },
 }
-

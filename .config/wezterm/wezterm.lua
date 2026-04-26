@@ -4,7 +4,7 @@ local config = wezterm.config_builder()
 config.automatically_reload_config = true
 config.font_size = 12.0
 config.use_ime = true
-config.window_background_opacity = 0.75
+config.window_background_opacity = 0.85
 config.macos_window_background_blur = 20
 
 ----------------------------------------------------
@@ -81,4 +81,3 @@ config.key_tables = require("keybinds").key_tables
 config.leader = { key = "q", mods = "CTRL", timeout_milliseconds = 2000 }
 
 return config
-
