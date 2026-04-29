@@ -42,4 +42,23 @@ return {
       },
     },
   },
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    -- キーマップの設定
+    keys = {
+      { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+      { "<leader>gf", "<cmd>LazyGitCurrentFile<cr>", desc = "LazyGit Current File" },
+    },
+    -- 依存関係（telescope を使っているなら連携できます）
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
 }
