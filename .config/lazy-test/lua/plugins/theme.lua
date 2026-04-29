@@ -9,6 +9,13 @@ return {
         sidebars = "transparent",
         floats = "transparent",
       },
+      on_highlights = function(hl, c)
+        hl.CursorLineNr = { fg = "#fab387", bold = true }
+        local lineColor = "#5a7a58"
+        hl.LineNr = { fg = lineColor }
+        hl.LineNrAbove = { fg = lineColor }
+        hl.LineNrBelow = { fg = lineColor }
+      end,
     },
     config = function(_, opts)
       require("tokyonight").setup(opts)
