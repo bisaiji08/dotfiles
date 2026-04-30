@@ -32,9 +32,7 @@ return {
       },
       formatters = {
         stylua = {
-          -- 明示的に lazy-test 内の設定ファイルを使うように指定
-          -- .stylua.toml にリネームした場合は、ここもドットありの名前にしてください
-          args = { "--config-path", vim.fn.expand("~/.config/lazy-test/stylua.toml"), "-" },
+          args = { "--config-path", vim.fn.stdpath("config") .. "/stylua.toml", "-" },
         },
       },
       format_on_save = { timeout_ms = 500, lsp_fallback = true },

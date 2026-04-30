@@ -19,7 +19,7 @@ return {
         dashboard.button("e", "󰉓  file tree", "<cmd>Oil<cr>"),
         dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
         dashboard.button("l", "󰒲  Lazy", ":Lazy<CR>"),
-        dashboard.button("d", "  Dotfiles", ":e ~/.config/lazy-test<CR>"),
+        dashboard.button("d", "  Dotfiles", ":e ~/.config/nvim<CR>"),
         dashboard.button("q", "  Quit", ":qa<CR>"),
       }
 
