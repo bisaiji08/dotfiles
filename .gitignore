@@ -2,11 +2,14 @@
 .config/some-app/cache/
 # macOS特有のファイル
 .DS_Store
-# Emacs系
-elpa/
-transient/
-custom.el
-*~
-\#*\#
-auto-save-list/
-shortcuts
+# Emacs系(一時断念)
+# elpa/
+# transient/
+# custom.el
+# *~
+# \#*\#
+# auto-save-list/
+# shortcuts
+emacs/
+doom/
+emacs.bak/
