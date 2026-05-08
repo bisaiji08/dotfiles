@@ -7,7 +7,7 @@ return {
       transparent = true, -- 透過設定
       styles = {
         sidebars = "transparent",
-        floats = "transparent",
+        floats = "dark",
       },
       on_highlights = function(hl, c)
         hl.CursorLineNr = { fg = "#fab387", bold = true }

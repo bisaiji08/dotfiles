@@ -19,6 +19,25 @@ return {
         layout_strategy = "horizontal",
         layout_config = { prompt_position = "top" },
         sorting_strategy = "ascending",
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          "--hidden", -- これを追加すると隠しファイルも検索対象になります
+          "--glob",
+          "!.git/*", -- ただし .git の中は除外するのが一般的です
+        },
+      },
+      pickers = {
+        live_grep = {
+          additional_args = function(opts)
+            return { "--hidden" }
+          end,
+        },
       },
     },
   },
