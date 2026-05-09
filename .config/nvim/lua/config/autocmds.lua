@@ -34,3 +34,35 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     vim.opt.fillchars:append({ eob = " " })
   end,
 })
+
+-- バッファが0の時ダッシュボードを表示
+vim.api.nvim_create_autocmd("BufDelete", {
+  callback = function()
+    if vim.v.vim_did_enter == 0 then
+      return
+    end
+    local ft = vim.bo.filetype
+    if ft == "oil" or ft == "NvimTree" then
+      return
+    end
+    vim.schedule(function()
+      local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+      -- 実質的に空（名前なしバッファのみ）かどうか判定
+      local is_empty = #buffers == 0 or (#buffers == 1 and buffers[1].name == "" and buffers[1].changed == 0)
+      if is_empty and vim.bo.filetype ~= "alpha" then
+        -- Alphaを起動
+        local status_ok, _ = pcall(require, "alpha")
+        if status_ok then
+          vim.cmd("Alpha")
+          -- 【ここが重要】Alpha起動後、残っている「No Name」バッファを掃除する
+          local new_buffers = vim.fn.getbufinfo({ buflisted = 1 })
+          for _, buf in ipairs(new_buffers) do
+            if buf.name == "" and buf.changed == 0 and buf.bufnr ~= vim.api.nvim_get_current_buf() then
+              vim.api.nvim_buf_delete(buf.bufnr, { force = true })
+            end
+          end
+        end
+      end
+    end)
+  end,
+})
