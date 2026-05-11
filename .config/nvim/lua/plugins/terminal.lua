@@ -31,7 +31,7 @@ return {
       -- エスケープ設定
       function _G.set_terminal_keymaps()
         local t_opts = { buffer = 0 }
-        vim.keymap.set("t", "<C-;><C-;>", [[<C-\><C-n>]], t_opts)
+        vim.keymap.set("t", "<C-j><C-j>", [[<C-\><C-n>]], t_opts)
       end
       -- ターミナルモードで起動するように固定
       vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
