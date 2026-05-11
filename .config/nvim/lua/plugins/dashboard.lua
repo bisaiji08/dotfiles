@@ -6,6 +6,7 @@ return {
       local dashboard = require("alpha.themes.dashboard")
 
       -- 1. ロゴ
+      dashboard.section.header.opts.hl = "Function"
       dashboard.section.header.val = {
         [[ ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ]],
         [[ ████╗  ██╗██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ]],
@@ -25,7 +26,7 @@ return {
 
       -- 3. フッター（ここをシンプルに文字列だけにします）
       dashboard.section.footer.val = "Neovim loaded!"
-      dashboard.section.footer.opts.hl = "Type"
+      dashboard.section.footer.opts.hl = "Comment"
       dashboard.section.footer.opts.position = "center"
 
       return dashboard
