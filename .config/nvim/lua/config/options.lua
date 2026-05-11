@@ -5,7 +5,7 @@ vim.g.maplocalleader = " "
 -- 行番号・表示系
 vim.opt.number = true -- 絶対行番号を表示
 vim.opt.relativenumber = true -- 相対行番号を表示
-vim.opt.cursorline = true -- カーソルがある行をハイライト
+-- vim.opt.cursorline = true -- カーソルがある行をハイライト
 vim.opt.wrap = false -- 行の折り返しを無効
 vim.opt.fillchars:append({ eob = " " }) -- 行番号の~を非表示
 
