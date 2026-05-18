@@ -28,9 +28,6 @@ return {
         max_width = 0, -- 0は最大幅
         max_height = 0,
         border = "rounded",
-        win_options = {
-          winblend = 10, -- 少し透けさせるとカッコいい
-        },
       },
     },
   },
